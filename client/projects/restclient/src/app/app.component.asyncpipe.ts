@@ -25,6 +25,7 @@ export class AppComponentAsync{
   products$: Observable<Product[]>;
   error:string;
   constructor(private httpClient: HttpClient) {
+    this.error = '';
     this.products$ = this.httpClient.get<Product[]>('/api/products')
       .pipe(
         catchError( err => {
