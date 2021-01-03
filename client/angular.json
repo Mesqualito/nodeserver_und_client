@@ -122,6 +122,126 @@
           }
         }
       }
+    },
+    "restclientpost": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "root": "projects/restclientpost",
+      "sourceRoot": "projects/restclientpost/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/restclientpost",
+            "index": "projects/restclientpost/src/index.html",
+            "main": "projects/restclientpost/src/main.ts",
+            "polyfills": "projects/restclientpost/src/polyfills.ts",
+            "tsConfig": "projects/restclientpost/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/restclientpost/src/favicon.ico",
+              "projects/restclientpost/src/assets"
+            ],
+            "styles": [
+              "projects/restclientpost/src/styles.sass"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/restclientpost/src/environments/environment.ts",
+                  "with": "projects/restclientpost/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "restclientpost:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "restclientpost:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "restclientpost:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/restclientpost/src/test.ts",
+            "polyfills": "projects/restclientpost/src/polyfills.ts",
+            "tsConfig": "projects/restclientpost/tsconfig.spec.json",
+            "karmaConfig": "projects/restclientpost/karma.conf.js",
+            "assets": [
+              "projects/restclientpost/src/favicon.ico",
+              "projects/restclientpost/src/assets"
+            ],
+            "styles": [
+              "projects/restclientpost/src/styles.sass"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/restclientpost/tsconfig.app.json",
+              "projects/restclientpost/tsconfig.spec.json",
+              "projects/restclientpost/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/restclientpost/e2e/protractor.conf.js",
+            "devServerTarget": "restclientpost:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "restclientpost:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "restclient"

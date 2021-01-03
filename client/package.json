@@ -5,7 +5,8 @@
     "build": "ng build --prod --project restclient",
     "postbuild": "npm run deploy",
     "predeploy": "rimraf ../server/build/public && mkdirp ../server/build/public",
-    "deploy": "copyfiles -f dist/restclient/** ../server/build/public"
+    "deploy": "copyfiles -f dist/restclient/** ../server/build/public",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
