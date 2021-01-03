@@ -15,6 +15,8 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
   `})
 export class AppComponent {
 
+  title = 'restclientpost';
+
   response: string;
 
   constructor(private httpClient: HttpClient) {

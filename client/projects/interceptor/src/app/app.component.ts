@@ -17,6 +17,8 @@ import {map} from "rxjs/operators";
   `})
 export class AppComponent {
 
+  title = 'interceptor';
+
   response$: Observable<string>;
 
   constructor(private httpClient: HttpClient) {
