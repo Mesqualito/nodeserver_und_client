@@ -28,6 +28,8 @@ export class AppComponent implements OnInit{
   error: string;
 
   constructor(private httpClient: HttpClient) {
+    this.productSubscription = new Subscription();
+    this.error= '';
     this.theDataSource$ = this.httpClient.get<Product[]>('/api/products');
   }
 
